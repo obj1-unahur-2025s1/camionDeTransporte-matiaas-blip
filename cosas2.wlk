@@ -5,15 +5,21 @@ object knightRider {
     method peligrosidad() {
       return 10
     }
+    method bulto() {
+      return 1
+    }
+    method sufrirCambios() {
+      
+    }
 }
 
 object bumblebee {
-    var forma = "auto"
+    var forma = auto
     method peso() {
       return 800
     }
     method peligrosidad() {
-      if (forma == "auto") {
+      if (forma == auto) {
         return 15
     } else {
         return 30
@@ -22,6 +28,16 @@ object bumblebee {
     method setearTransformacion(unaForma) {
       forma = unaForma
     }
+    method bulto() {
+      return 2
+    }
+    method sufrirCambios() {
+        forma = robot
+    }
+}
+object robot {
+}
+object auto {
 }
 
 object paqueteLadrillos {
@@ -35,6 +51,18 @@ object paqueteLadrillos {
     method cantidadDelPaquete(unaCantidad) {
       cantidad = unaCantidad
     }
+    method bulto() {
+      if (cantidad < 100) {
+        return 1
+      } else if (cantidad.between(101, 300)) {
+        return 2
+      } else {
+        return 3
+      }
+    }
+    method sufrirCambios() {
+        cantidad = cantidad + 12
+    }
 }
 
 object arenaGranel {
@@ -47,6 +75,12 @@ object arenaGranel {
     }
     method setPeso(unPeso) {
       peso = unPeso
+    }
+    method bulto() {
+      return 1
+    }
+    method sufrirCambios() {
+     peso = peso - 10 
     }
 }
 
@@ -72,6 +106,16 @@ object bateriaAntiaerea {
     method activarMisiles() {
       misiles = true
     }
+    method bulto() {
+      if (self.estaConMisiles()) {
+        return 2
+      } else {
+        return 1
+      }
+    }
+    method sufrirCambios() {
+     misiles = true 
+    }
 }
 
 object contenedorPortuario {
@@ -96,6 +140,16 @@ object contenedorPortuario {
     method guardar(cosa) {
       carga.add(cosa)
     }
+    method bulto() {
+      return 1 + carga.sum({
+        cosa => cosa.bulto()
+      })
+    }
+    method sufrirCambios() {
+        carga.forEach({
+            cosa => cosa.sufrirCambios()
+        })
+    }
 }
 
 object residuosRadioactivos {
@@ -108,6 +162,12 @@ object residuosRadioactivos {
     }
     method decidirPeso(unpeso) {
       peso = unpeso
+    }
+    method bulto() {
+      return 1
+    }
+    method sufrirCambios() {
+     peso = peso + 15 
     }
 }
 
@@ -122,6 +182,9 @@ object embalajeSeguridad {
     method embalar(cosa) {
       cosaAdentro = cosa
     }
+    method bulto() {
+      return 2
+    }
+    method sufrirCambios() { 
+    }
 }
-
-

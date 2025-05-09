@@ -1,9 +1,27 @@
+import camion.*
 import cosas.*
 
 describe "group of test for cosas" {
 
   test "first test" {
+    residuosRadioactivos.decidirPeso(30)
+    embalajeSeguridad.embalar(residuosRadioactivos)
+    contenedorPortuario.guardar(paqueteLadrillos)
+    contenedorPortuario.guardar(bateriaAntiaerea)
+    contenedorPortuario.guardar(embalajeSeguridad)
     assert.that(true)
   }
 
+  test "description" {
+    bumblebee.setearTransformacion("robot")
+    arenaGranel.setPeso(150)
+    bateriaAntiaerea.activarMisiles()
+    embalajeSeguridad.embalar(paqueteLadrillos)
+    paqueteLadrillos.cantidadDelPaquete(80)
+    camion.cargar(bumblebee)
+    camion.cargar(arenaGranel)
+    camion.cargar(bateriaAntiaerea)
+    camion.cargar(embalajeSeguridad)
+  }
 }
+

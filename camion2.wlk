@@ -1,4 +1,4 @@
-import cosas.*
+import cosas2.*
 object camion {
     var carga = #{}
     method peso() {
@@ -11,6 +11,7 @@ object camion {
     }
     method cargar(cosa) {
       carga.add(cosa)
+      cosa.sufrirCambios()
     }
     method descargar(cosa) {
       carga.remove(cosa)
